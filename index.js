@@ -2,8 +2,15 @@ const colors = ["#FFADAD", "#FFD6A5", "#FDFFB6", "#CAFFBF", "#A0C4FF", "#BDB2FF"
 const changeColorBtn = document.getElementById("change-color-btn");
 const currentColor = document.getElementById("current-color");
 
+let lastIndex = -1;
+
 changeColorBtn.addEventListener("click", () => {
-    let randomColor = Math.floor(Math.random() * colors.length);
-    document.body.style.backgroundColor = colors[randomColor];
-    currentColor.textContent = `Current Colour: ${colors[randomColor]}`;
+    let randomIndex;
+
+    do {
+        randomIndex = Math.floor(Math.random() * colors.length);
+    } while (randomIndex === lastIndex);
+
+    document.body.style.backgroundColor = colors[randomIndex];
+    currentColor.textContent = `Current Colour: ${colors[randomIndex]}`;
 });
